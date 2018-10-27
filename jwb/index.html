@@ -1,963 +1,154 @@
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="description" content="" />
-    <meta name="Keywords" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" href="css/drawer.min.css" >
-    <script src="js/jquery.min.js" ></script>
-    <script src="js/iscroll.js" ></script>
-    <script src="js/jquery.drawer.min.js" ></script>
-    <link rel="stylesheet" href="css/animate.min.css" >
-    <link href="./css/style.css"  rel="stylesheet" />
-    
-    <title></title>
-    
-    <script type="text/javascript">
-    
-        $(function(){
-            $(".ce > li > a").click(function(){
-                 $(this).addClass("xz").parents().siblings().find("a").removeClass("xz");
-            })
-
-            $(window).scroll(function(){
-                var top = $(window).scrollTop();   //设置变量top,表示当前滚动条到顶部的值
-                if (top > 200)                      //当滚动条到顶部的值大于70时，添加类".ce2"到".ce"中
-                {
-                    $("header").addClass("scroll-header");
-                }
-                else                              //当滚动条到顶部的值小于等于70时，把".ce"中的类".ce2"删除
-                {
-                    $("header").removeClass("scroll-header");
-                }
-
-                
-                $(".ce > li > a").removeClass("xz").eq(2).addClass("xz"); 
-
-                var tt = window.innerHeight;;    //设置变量tt,表示当前窗口高度的值 1080 window.innerHeight; //window的高度，即手机的高 974
-                
-                if(top < tt ){  //在此处通过判断滚动条到顶部的值和当前窗口高度的关系（当前窗口的n倍 <= top <= 当前窗口的n+1倍）来取得和导航索引值的对应关系
-                    $(".ce > li > a").removeClass("xz").eq(3).addClass("xz");     //先删除导航所有的选中状态，在通过上面判断中获得的导航索引值给当前导航加选中样式！
-                }
-                
-                if(top >= tt && top <= 2*tt){  //在此处通过判断滚动条到顶部的值和当前窗口高度的关系（当前窗口的n倍 <= top <= 当前窗口的n+1倍）来取得和导航索引值的对应关系
-                    $(".ce > li > a").removeClass("xz").eq(2).addClass("xz");     //先删除导航所有的选中状态，在通过上面判断中获得的导航索引值给当前导航加选中样式！
-                }
-                
-                if(top >2 * tt && top <= 4*tt){
-                    $(".ce > li > a").removeClass("xz").eq(1).addClass("xz");
-                }
-                
-                if(top >4 * tt){
-                    $(".ce > li > a").removeClass("xz").eq(0).addClass("xz");
-                }
-                
-                $(".name111").text(top);
-            })
-                    
-            $("#navon0").click(function(){
-               $("html,body").animate({scrollTop:$("#home").offset().top},600);
-
-            })
-            $("#navon1").click(function(){
-               $("html,body").animate({scrollTop:$("#overview").offset().top},600);
-
-            })
-            $("#navon2").click(function(){
-               $("html,body").animate({scrollTop:$("#introduce").offset().top},600);
-            })
-            $("#navon3").click(function(){
-              $("html,body").animate({scrollTop:$("#aboutus").offset().top},600);   
-            })
-        })
-        
-        function ReturnTop() {
-            $("body,html").animate({ scrollTop: 0 }, 500);
-            return false;
-        }
-        
-        document.oncontextmenu = function (event) { if (window.event) { event = window.event; } try { var the = event.srcElement; if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) { return false; } return true; } catch (e) { return false; } } //屏蔽右键菜单
-        document.onpaste = function (event) { if (window.event) { event = window.event; } try { var the = event.srcElement; if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) { return false; } return true; } catch (e) { return false; } } //屏蔽粘贴
-        document.oncopy = function (event) { if (window.event) { event = window.event; } try { var the = event.srcElement; if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) { return false; } return true; } catch (e) { return false; } } //屏蔽复制
-        document.oncut = function (event) { if (window.event) { event = window.event; } try { var the = event.srcElement; if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) { return false; } return true; } catch (e) { return false; } } //屏蔽剪切
-        document.onselectstart = function (event) { if (window.event) { event = window.event; } try { var the = event.srcElement; if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) { return false; } return true; } catch (e) { return false; } } //屏蔽选择
-    </script>
-</head>
-<body>
-    <!--一开始出现的页面-->
-    <div id="main">
-        <div id="loading">
-            <div></div>
-            <div></div>
-            <span></span>
-        </div>
-        
-        <header  id="header">
-            <div class="wrap">
-                <div class="logo">
-                    <a href="index.html" >
-                        <img src="images/jwb.png" >
-                    </a>
-                </div>
-                <nav class="nav_m"> 
-                    <ul id="nav"  class="ce">
-                        <li>
-                            <a href="javascript:;">
-                                <div class="up">お問い合わせ</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <div class="up">事業紹介</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <div class="up">会社概要</div>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:;">
-                                <div class="up">HOME</div>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        
-
-        <div id="content">
-<!--
-            <ul id="menu">
-                <li class="active"></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
--->
-            <ul id="list">
-                <li id="bus1" class="liList">
-                    <div id="sections-wrapper">
-                        <section class="show" data-img="images/jwb_0_bj.jpg"></section>
-                        <section class="hide-bottom" data-img="images/jwb_1_bj.jpg"></section>
-                    </div>
-
-                    <div class="sign"><img src="images/sign.png" ></div>
-
-                    <div class="fv_news">		
-                        <div class="fv_news__body">
-                            <div class="fv_news__item--first">
-                                <span class="fv_news__item__time">2018.05.07</span>
-                                <a href="" class="fv_news__item__link">
-                                        27th Japan IT Week -IoT/M2M Spring-						
-                                </a>
-                            </div>
-                            <div class="fv_news__list">
-                                <div class="fv_news__item">
-                                    <span class="fv_news__item__time">20b18.05.02</span>
-                                    <a href="" class="fv_news__item__link">Message from JWB,Inc.</a>
-                                </div>
-                            </div>
-
-                            <div class="fv_news__list">
-                                <div class="fv_news__item">
-                                    <span class="fv_news__item__time">20b18.05.02</span>
-                                    <a href="" class="fv_news__item__link">Message from JWB,Inc.</a>
-                                </div>
-                            </div>
-
-                            <div class="fv_news__list">
-                                <div class="fv_news__item">
-                                    <span class="fv_news__item__time">20b18.05.02</span>
-                                    <a href="" class="fv_news__item__link">Message from JWB,Inc.</a>
-                                </div>
-                            </div>
-                            <button class="fv_news__more">SEE MORE</button>
-                        </div>
-
-                        <div class="fv_news__mosaic">
-                            <div class="fv_mosaic on" data-x="0" data-y="0"></div>
-                            <div class="fv_mosaic on" data-x="1" data-y="0"></div>
-                            <div class="fv_mosaic on" data-x="2" data-y="0"></div>
-                            <div class="fv_mosaic" data-x="3" data-y="0"></div>
-                            <div class="fv_mosaic on" data-x="4" data-y="0"></div>
-                            <div class="fv_mosaic on" data-x="5" data-y="0"></div>
-                            <div class="fv_mosaic on" data-x="0" data-y="1"></div>
-                            <div class="fv_mosaic" data-x="1" data-y="1"></div>
-                            <div class="fv_mosaic on" data-x="2" data-y="1"></div>
-                            <div class="fv_mosaic on" data-x="3" data-y="1"></div>
-                            <div class="fv_mosaic" data-x="4" data-y="1"></div>
-                            <div class="fv_mosaic" data-x="5" data-y="1"></div>
-                            <div class="fv_mosaic on" data-x="0" data-y="2"></div>
-                            <div class="fv_mosaic on" data-x="1" data-y="2"></div>
-                            <div class="fv_mosaic" data-x="2" data-y="2"></div>
-                            <div class="fv_mosaic" data-x="3" data-y="2"></div>
-                            <div class="fv_mosaic on" data-x="4" data-y="2"></div>
-                            <div class="fv_mosaic" data-x="5" data-y="2"></div>
-                            <div class="fv_mosaic on" data-x="0" data-y="3"></div>
-                            <div class="fv_mosaic" data-x="1" data-y="3"></div>
-                            <div class="fv_mosaic on" data-x="2" data-y="3"></div>
-                            <div class="fv_mosaic" data-x="3" data-y="3"></div>
-                            <div class="fv_mosaic" data-x="4" data-y="3"></div>
-                            <div class="fv_mosaic" data-x="5" data-y="3"></div>
-                            <div class="fv_mosaic on" data-x="0" data-y="4"></div>
-                            <div class="fv_mosaic on" data-x="1" data-y="4"></div>
-                            <div class="fv_mosaic" data-x="2" data-y="4"></div>
-                            <div class="fv_mosaic on" data-x="3" data-y="4"></div>
-                            <div class="fv_mosaic" data-x="4" data-y="4"></div>
-                            <div class="fv_mosaic" data-x="5" data-y="4"></div>
-                        </div>
-                    </div>   
-
-                </li>
-                
-                
-                <li id="bus2" class="liList">
-                    <div id="bus2Content">
-                        <div class=bus2_frame>                
-                            <div class= "bus2_rightBG"></div>
-                        </div>
-
-                        <div class= "bus2_left">
-                            <div class="bus2_left0">
-                                <div class="bus2_redblock"></div>  
-                            </div>
-
-                            <div class="bus2_left1">                        
-                                <div class="bus2_wordblock">
-                                    <dl>
-                                        <dd>会</dd>
-                                        <dd>社</dd>
-                                        <dd>概</dd>                    
-                                        <dd>要</dd>
-                                    </dl>
-                                </div>  
-                            </div>
-
-                            <div class="bus2_left2">                
-                                <dl>
-                                    <dt>
-                                        <img src="images/business0_up.png" >
-                                    </dt>
-                                    <dd><hr/></dd>
-                                    <dd><h3>民族間の文化や習慣の違いから生まれる誤解を取り払い、</h3></dd>
-                                    <dd><h3>日本と世界の橋渡しになりたい。</h3></dd>                    
-                                    <dd>---</dd>
-                                    <dd><h4>創始者</h4></dd>
-                                    <dd>●代表取締役社長：田中陽樹</dd>
-
-                                </dl>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                
-                <li id="bus3" class="liList">
-                    <div id="bus3Content">	
-                        <!-- 绿块 -->
-                        <div class= "bus3_green">
-                            <div class="bus3_greenCon">
-                                <dl>                    
-                                    <dd>
-                                        <h3>
-                                        日本の企業や投資家が海外に、または海外の企業や投資家が日本に進出するきっかけを作り、更にその後のビジネスがよりスムーズに進められるよう、弊社がお手伝いをさせていただきます。
-                                        <br>
-                                        慣れない国では言葉はもちろん、文化や習慣など、様々な違いがあります。私たちは持てる人脈や経験を活かし、それらの壁を出来るだけなくすことで、お互いに歩み寄れるよう尽力致します。
-                                        </h3>
-                                    </dd>
-                                </dl>
-                            </div>  
-                        </div>
-
-                        <!-- next -->
-                        <div class= "bus3_frame">
-                            <div class="bus3_shu_line2"></div>
-                            <div class="bus3_frameCon">            
-                                <p><img src="images/next.png" ></p>
-                            </div>  
-                        </div>
-
-                        <!-- 横线 -->
-                        <div class="bus3_heng_line1"></div>
-
-                        <!-- 红块 -->
-                        <div class= "bus3_red">
-                            <div class="bus3_shu_line1"></div>
-                            <div class="bus3_redCon">
-                                <dl>                    
-                                    <dd>
-                                        <h3>コンサルタント</h3>
-                                        <h3>事業</h3>
-                                    </dd>
-                                </dl>                    
-                            </div>                      
-                        </div>                 
-                    </div>   
-                </li>
-                
-                <li id="bus4" class="liList">
-                    <!-- 商务四 -->
-                    <div id="bus4Content">	
-                        <!-- 绿块 -->
-                        <div class= "bus4_green">
-                            <div class="bus4_greenCon">
-                                <dl>                    
-                                    <dd>
-                                        <h3>
-                                        主に日本国内で仕入れ、海外に輸出することをメインに行っています。今後は海外から日本への輸入も視野に入れて、事業拡大を目指しています。
-                                        </h3>
-                                    </dd>
-                                </dl>
-                            </div>  
-                        </div>
-
-                        <!-- next -->
-                        <div class= "bus4_frame">
-                            <div class="bus4_shu_line2"></div>
-                            <div class="bus4_frameCon">            
-                                <p><img src="images/next.png" ></p>
-                            </div>  
-                        </div>
-
-                        <!-- 横线 -->
-                        <div class="bus4_heng_line1"></div>
-
-                        <!-- 红块 -->
-                        <div class= "bus4_red">
-                            <div class="bus4_shu_line1"></div>
-                            <div class="bus4_redCon">
-                                <dl>                    
-                                    <dd>
-                                        <h3>貿易事業</h3>
-                                    </dd>
-                                </dl>                    
-                            </div>                      
-                        </div>      
-                    </div>
-                </li>
-                
-                <li id="bus5" class="liList">
-                    <!-- 商务三 -->
-                    <div id="bus5Content">	
-                        <!-- 绿块 -->
-                        <div class= "bus5_green">
-                            <div class="bus5_greenCon">
-                                <dl>                    
-                                    <dd>
-                                        <h3>
-                                        日本国内での土地の売買や、建物の賃貸、売買を主に目的として行っております。<br>海外のお客様との契約も対応していますので、土地の運用や、税金のことなど、お気軽にお問い合わせください。
-                                        </h3>
-                                    </dd>
-                                </dl>
-                            </div>  
-                        </div>
-
-                        <!-- next -->
-                        <div class= "bus5_frame">
-                            <div class="bus5_shu_line2"></div>
-                            <div class="bus5_frameCon">            
-                                <p><img src="images/next.png" ></p>
-                            </div>  
-                        </div>
-
-                        <!-- 横线 -->
-                        <div class="bus5_heng_line1"></div>
-
-                        <!-- 红块 -->
-                        <div class= "bus5_red">
-                            <div class="bus5_shu_line1"></div>
-                            <div class="bus5_redCon">
-                                <dl>                    
-                                    <dd>
-                                        <h3>不動産事業</h3>
-                                    </dd>
-                                </dl>                    
-                            </div>                      
-                        </div> 
-                    </div>
-                </li>  
-                     
-                <li id="bus6" class="liList">
-                    <!-- 商务四 -->
-                    <div id="bus6Content">	
-                        <!-- 绿块 -->
-                        <div class= "bus6_green">
-                            <div class="bus6_greenCon">
-                                <dl>                    
-                                    <dd>
-                                        <h3>
-                                        旅行会社の紹介、ホテルやレストランの予約、アウトドアアクティビティの情報紹介、ツアーガイドの紹介など、海外から来られるお客様のアテンドを行なっています。
-                                        </h3>
-                                    </dd>
-                                </dl>
-                            </div>  
-                        </div>
-
-                        <!-- next -->
-                        <div class= "bus6_frame">
-                            <div class="bus6_shu_line2"></div>
-                            <div class="bus6_frameCon">            
-                                <p><img src="images/next.png" ></p>
-                            </div>  
-                        </div>
-
-                        <!-- 横线 -->
-                        <div class="bus6_heng_line1"></div>
-
-                        <!-- 红块 -->
-                        <div class= "bus6_red">
-                            <div class="bus6_shu_line1"></div>
-                            <div class="bus6_redCon">
-                                <dl>                    
-                                    <dd>
-                                        <h3>旅行事業</h3>
-                                    </dd>
-                                </dl>                    
-                            </div>                      
-                        </div>      
-                    </div>
-                </li>                
-                
-                <li id="about7" class="liList"> 
-                    <!-- 上 -->
-                    <div class= "about7_redleft">
-                        <div class="about7_leftblock"></div>  
-                    </div>
-
-                    <!-- 中 -->
-                    <div class= "about7_middle">
-                        <div class= "about7_middleL">
-                            <dl>
-                                <dt>
-                                    <img src="images/logo_small.png" >&nbsp; 
-                                </dt>
-                                <dd><hr/></dd>
-                                <dd>● TEL：011-769-9908</dd>
-                                <dd>● E-mail：jwb.corporation@gmail.com</dd>                    
-                                <dd>● FAX：011-769-9908</dd>
-                                <dd>● 受付時間：平日 9:00~18:00 土日 休み</dd>
-                                <dd>&nbsp;&nbsp;&nbsp;&nbsp; ※急を要することがあれば、土日でもメール対応をさせていただきます。</dd>
-                                <dd>● アクセス：狸小路6丁目 地下鉄大通駅から徒歩8分</dd>
-                                <dd>&nbsp;&nbsp;&nbsp;&nbsp; 近くに有料パーキング有り</dd>
-
-                            </dl>
-                        </div>
-                        <div class= "about7_middleR">
-                            <dl>
-                                <dt>お問い合わせ</dt>
-                                <form action="" method="post">
-                                <dd><p>お名前：</p><input type="text" class="input_4"  id="txtName" name="txtName" /> </dd>                       
-                                <dd><p>法人名：</p><input type="text" class="input_4" id="txtTitle" name="txtCompanyName" /> </dd>  
-                                <dd><p>E-mail：</p><input type="text" class="input_4" id="txtEmail" name="txtEmail" /> </dd>
-                                <dd><p>電話番号：</p><input type="text" class="input_4" id="txtPhone" name="txtPhone" /> </dd>
-                                <dd><p>題名：</p><input type="text" class="input_4" id="txtTitle" name="txtCompanyName" /> </dd>
-                                    <dd1><p>お問い合わせ内容：</p>
-                                    <textarea cols="" rows="" class="input_5" id="txtContent"
-                                        name="txtContent">
-                                    </textarea>
-                                </dd1>
-                                <dd2>
-                                     <input name="" type="submit" class="input_6" value="送信" id="txtSubmit" />
-                                </dd2>
-                                </form>
-                            </dl>
-                        </div>
-                    </div>
-
-                    <!-- 下 -->
-                    <div class= "about7_redright">
-                        <div class="about7_rightblock"></div>  
-                    </div>   
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    
-    
-    <!--缩小一点的页面-->
-    <div id="mainsmall">
-        <header>
-            <div class="wrap">
-                <div class="logo">
-                    <a href="index.html" >
-                        <img src="images/jwb.png" ></a></div>
-                <nav class="nav_m">   
-                    <ul class="ce">
-                        <li><a id="navon3" href="#aboutus" >お問い合わせ</a></li>
-                        <li><a id="navon2" href="#introduce" >事業紹介</a></li>    
-                        <li><a id="navon1" href="#overview" >会社概要</a></li>
-                        <li><a id="navon0" class="xz" href="#home" >HOME</a></li>
-                    </ul>
-                </nav>
-                <div class="nav_1">
-                    <div class="drawer drawer-right">
-                        <div class="drawer-toggle drawer-hamberger">
-                            <span></span>
-                        </div>
-                        <div class="drawer-main drawer-default">
-                            <nav class="drawer-nav" role="navigation">
-                                <ul class="drawer-nav-list">
-                                    <li><a href="#home" >HOME</a></li>
-                                    <li><a href="#overview" >会社概要</a></li>
-                                    <li><a href="#introduce" >事業紹介</a></li>
-                                    <li><a href="#aboutus" >お問い合わせ</a></li>                           
-                                </ul>
-                            </nav>
-                        </div>
-                        <script>
-                            $(document).ready(function () {
-                                $('.drawer').drawer();
-                                $('.js-trigger').click(function () {
-                                    $('.drawer').drawer("open");
-                                });
-                            });
-                        </script>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <div id="sections-wrapper">
-            <section class="show" data-img="images/jwb_1_bj.jpg"></section>
-            <section class="hide-bottom" data-img="images/jwb_1_bj.jpg"></section>
-        </div>
-
-        <div class="sign"><img src="images/sign.png" ></div>
-
-        <div class="fv_news">		
-            <div class="fv_news__body">
-                <div class="fv_news__item--first">
-                    <span class="fv_news__item__time">2018.05.07</span>
-                    <a href="" class="fv_news__item__link">
-                            27th Japan IT Week -IoT/M2M Spring-						
-                    </a>
-                </div>
-                <div class="fv_news__list">
-                    <div class="fv_news__item">
-                        <span class="fv_news__item__time">20b18.05.02</span>
-                        <a href="" class="fv_news__item__link">Message from JWB,Inc.</a>
-                    </div>
-                </div>
-
-                <div class="fv_news__list">
-                    <div class="fv_news__item">
-                        <span class="fv_news__item__time">20b18.05.02</span>
-                        <a href="" class="fv_news__item__link">Message from JWB,Inc.</a>
-                    </div>
-                </div>
-
-                <div class="fv_news__list">
-                    <div class="fv_news__item">
-                        <span class="fv_news__item__time">20b18.05.02</span>
-                        <a href="" class="fv_news__item__link">Message from JWB,Inc.</a>
-                    </div>
-                </div>
-                <button class="fv_news__more">SEE MORE</button>
-            </div>
-
-            <div class="fv_news__mosaic">
-                <div class="fv_mosaic on" data-x="0" data-y="0"></div>
-                <div class="fv_mosaic on" data-x="1" data-y="0"></div>
-                <div class="fv_mosaic on" data-x="2" data-y="0"></div>
-                <div class="fv_mosaic" data-x="3" data-y="0"></div>
-                <div class="fv_mosaic on" data-x="4" data-y="0"></div>
-                <div class="fv_mosaic on" data-x="5" data-y="0"></div>
-                <div class="fv_mosaic on" data-x="0" data-y="1"></div>
-                <div class="fv_mosaic" data-x="1" data-y="1"></div>
-                <div class="fv_mosaic on" data-x="2" data-y="1"></div>
-                <div class="fv_mosaic on" data-x="3" data-y="1"></div>
-                <div class="fv_mosaic" data-x="4" data-y="1"></div>
-                <div class="fv_mosaic" data-x="5" data-y="1"></div>
-                <div class="fv_mosaic on" data-x="0" data-y="2"></div>
-                <div class="fv_mosaic on" data-x="1" data-y="2"></div>
-                <div class="fv_mosaic" data-x="2" data-y="2"></div>
-                <div class="fv_mosaic" data-x="3" data-y="2"></div>
-                <div class="fv_mosaic on" data-x="4" data-y="2"></div>
-                <div class="fv_mosaic" data-x="5" data-y="2"></div>
-                <div class="fv_mosaic on" data-x="0" data-y="3"></div>
-                <div class="fv_mosaic" data-x="1" data-y="3"></div>
-                <div class="fv_mosaic on" data-x="2" data-y="3"></div>
-                <div class="fv_mosaic" data-x="3" data-y="3"></div>
-                <div class="fv_mosaic" data-x="4" data-y="3"></div>
-                <div class="fv_mosaic" data-x="5" data-y="3"></div>
-                <div class="fv_mosaic on" data-x="0" data-y="4"></div>
-                <div class="fv_mosaic on" data-x="1" data-y="4"></div>
-                <div class="fv_mosaic" data-x="2" data-y="4"></div>
-                <div class="fv_mosaic on" data-x="3" data-y="4"></div>
-                <div class="fv_mosaic" data-x="4" data-y="4"></div>
-                <div class="fv_mosaic" data-x="5" data-y="4"></div>
-            </div>
-        </div>   
-
-        <div id="overview" class="overview">
-        <!-- 商务0 -->
-        <div class="overviewup"></div> 
-        <div class="business0">    
-            <div class=business0_frame>                
-                <div class= "business0_rightBG f_r wow bounceInRight"></div>
-            </div>
-
-            <div class= "business0_left f_l wow bounceInLeft">
-                <div class="business0_left0">
-                    <div class="business0_redblock"></div>  
-                </div>
-
-                <div class="business0_left1">                        
-                    <div class="business0_wordblock">
-                        <dl>
-                            <dd>会</dd>
-                            <dd>社</dd>
-                            <dd>概</dd>                    
-                            <dd>要</dd>
-                        </dl>
-                    </div>  
-                </div>
-
-                <div class="business0_left2">                
-                    <dl>
-                        <dt>
-                            <img src="images/business0_up.png" >
-                        </dt>
-                        <dd><hr/></dd>
-                        <dd><h3>民族間の文化や習慣の違いから生まれる誤解を取り払い、</h3></dd>
-                        <dd><h3>日本と世界の橋渡しになりたい。</h3></dd>                    
-                        <dd>---</dd>
-                        <dd><h4>創始者</h4></dd>
-                        <dd>●代表取締役社長：田中陽樹</dd>
-
-                    </dl>
-                </div>
-            </div>
-        </div>  
-    </div>
-
-        <div id="introduce" class="introduce">
-            <!-- 商务一 -->
-            <div class="business1up"></div> 
-            <div class="business1">  
-                <!-- 绿块 -->
-                <div class= "business1_green">
-                    <div class="business1_greenCon f_l wow bounceInRight">
-                        <dl>                    
-                            <dd>
-                                <h3>
-                                日本の企業や投資家が海外に、または海外の企業や投資家が日本に進出するきっかけを作り、更にその後のビジネスがよりスムーズに進められるよう、弊社がお手伝いをさせていただきます。
-                                <br>
-                                慣れない国では言葉はもちろん、文化や習慣など、様々な違いがあります。私たちは持てる人脈や経験を活かし、それらの壁を出来るだけなくすことで、お互いに歩み寄れるよう尽力致します。
-                                </h3>
-                            </dd>
-                        </dl>
-                    </div>  
-                </div>
-
-                <!-- next -->
-                <div class= "business1_frame f_l wow bounceInRight">
-                    <div class="business1_shu_line2"></div>
-                    <div class="business1_frameCon">            
-                        <p><img src="images/next.png" ></p>
-                    </div>  
-                </div>
-
-                <!-- 横线 -->
-                <div class="business1_heng_line1"></div>
-
-                <!-- 红块 -->
-                <div class= "business1_red f_l wow bounceInLeft">
-                    <div class="business1_shu_line1"></div>
-                    <div class="business1_redCon">
-                        <dl>                    
-                            <dd>
-                                <h3>コンサルタント</h3>
-                                <h3>事業</h3>
-                            </dd>
-                        </dl>                    
-                    </div>                      
-                </div>                 
-            </div>       
-
-            <!-- 商务二 -->
-            <div class="business2">    
-                <!-- 绿块 -->
-                <div class= "business2_green">
-                    <div class="business2_greenCon f_l wow bounceInRight">
-                        <dl>                    
-                            <dd>
-                                <h3>
-                                主に日本国内で仕入れ、海外に輸出することをメインに行っています。今後は海外から日本への輸入も視野に入れて、事業拡大を目指しています。
-                                </h3>
-                            </dd>
-                        </dl>
-                    </div>  
-                </div>
-
-                <!-- next -->
-                <div class= "business2_frame f_l wow bounceInRight">
-                    <div class="business2_shu_line2"></div>
-                    <div class="business2_frameCon">            
-                        <p><img src="images/next.png" ></p>
-                    </div>  
-                </div>
-
-                <!-- 横线 -->
-                <div class="business2_heng_line1"></div>
-
-                <!-- 红块 -->
-                <div class= "business2_red f_l wow bounceInLeft">
-                    <div class="business2_shu_line1"></div>
-                    <div class="business2_redCon">
-                        <dl>                    
-                            <dd>
-                                <h3>貿易事業</h3>
-                            </dd>
-                        </dl>                    
-                    </div>                      
-                </div>                 
-            </div>  
-
-            <!-- 商务三 -->
-            <div class="business3">    
-                <!-- 绿块 -->
-                <div class= "business3_green">
-                    <div class="business3_greenCon f_l wow bounceInRight">
-                        <dl>                    
-                            <dd>
-                                <h3>
-                                日本国内での土地の売買や、建物の賃貸、売買を主に目的として行っております。<br>海外のお客様との契約も対応していますので、土地の運用や、税金のことなど、お気軽にお問い合わせください。
-                                </h3>
-                            </dd>
-                        </dl>
-                    </div>  
-                </div>
-
-                <!-- next -->
-                <div class= "business3_frame f_l wow bounceInRight">
-                    <div class="business3_shu_line2"></div>
-                    <div class="business3_frameCon">            
-                        <p><img src="images/next.png" ></p>
-                    </div>  
-                </div>
-
-                <!-- 横线 -->
-                <div class="business3_heng_line1"></div>
-
-                <!-- 红块 -->
-                <div class= "business3_red f_l wow bounceInLeft">
-                    <div class="business3_shu_line1"></div>
-                    <div class="business3_redCon">
-                        <dl>                    
-                            <dd>
-                                <h3>不動産事業</h3>
-                            </dd>
-                        </dl>                    
-                    </div>                      
-                </div>                 
-            </div>  
-
-            <!-- 商务四 -->
-            <div class="business4">    
-                <!-- 绿块 -->
-                <div class= "business4_green">
-                    <div class="business4_greenCon f_l wow bounceInRight">
-                        <dl>                    
-                            <dd>
-                                <h3>
-                                旅行会社の紹介、ホテルやレストランの予約、アウトドアアクティビティの情報紹介、ツアーガイドの紹介など、海外から来られるお客様のアテンドを行なっています。
-                                </h3>
-                            </dd>
-                        </dl>
-                    </div>  
-                </div>
-
-                <!-- next -->
-                <div class= "business4_frame f_l wow bounceInRight">
-                    <div class="business4_shu_line2"></div>
-                    <div class="business4_frameCon">            
-                        <p><img src="images/next.png" ></p>
-                    </div>  
-                </div>
-
-                <!-- 横线 -->
-                <div class="business4_heng_line1"></div>
-
-                <!-- 红块 -->
-                <div class= "business4_red f_l wow bounceInLeft">
-                    <div class="business4_shu_line1"></div>
-                    <div class="business4_redCon">
-                        <dl>                    
-                            <dd>
-                                <h3>旅行事業</h3>
-                            </dd>
-                        </dl>                    
-                    </div>                      
-                </div>                 
-            </div>  
-
-        </div> 
-
-        <div id="aboutus" class="aboutus">  
-            <div class="business5">    
-                <!-- 上 -->
-                <div class= "business5_redleft">
-                    <div class="business5_leftblock f_l wow bounceInLeft"></div>  
-                </div>
-
-                <!-- 中 -->
-                <div class= "business5_middle">
-                    <div class= "business5_middleL">
-                        <dl>
-                            <dt>
-                                <img src="images/logo_small.png" >&nbsp; 
-                            </dt>
-                            <dd><hr/></dd>
-                            <dd>● TEL：011-769-9908</dd>
-                            <dd>● E-mail：jwb.corporation@gmail.com</dd>                    
-                            <dd>● FAX：011-769-9908</dd>
-                            <dd>● 受付時間：平日 9:00~18:00 土日 休み</dd>
-                            <dd>&nbsp;&nbsp;&nbsp;&nbsp; ※急を要することがあれば、土日でもメール対応をさせていただきます。</dd>
-                            <dd>● アクセス：狸小路6丁目 地下鉄大通駅から徒歩8分</dd>
-                            <dd>&nbsp;&nbsp;&nbsp;&nbsp; 近くに有料パーキング有り</dd>
-
-                        </dl>
-                    </div>
-                    <div class= "business5_middleR">
-                        <dl>
-                            <dt>お問い合わせ</dt>
-                            <form action="" method="post">
-                            <dd><p>お名前：</p><input type="text" class="input_4"  id="txtName" name="txtName" /> </dd>                       
-                            <dd><p>法人名：</p><input type="text" class="input_4" id="txtTitle" name="txtCompanyName" /> </dd>  
-                            <dd><p>E-mail：</p><input type="text" class="input_4" id="txtEmail" name="txtEmail" /> </dd>
-                            <dd><p>電話番号：</p><input type="text" class="input_4" id="txtPhone" name="txtPhone" /> </dd>
-                            <dd><p>題名：</p><input type="text" class="input_4" id="txtTitle" name="txtCompanyName" /> </dd>
-                                <dd1><p>お問い合わせ内容：</p>
-                                <textarea cols="" rows="" class="input_5" id="txtContent"
-                                    name="txtContent">
-                                </textarea>
-                            </dd1>
-                            <dd2>
-                                 <input name="" type="submit" class="input_6" value="送信" id="txtSubmit" />
-                            </dd2>
-                            </form>
-                        </dl>
-                    </div>
-                </div>
-
-                <!-- 下 -->
-                <div class= "business5_redright">
-                    <div class="business5_rightblock f_l wow bounceInRight"></div>  
-                </div>                 
-            </div>  
-
-            <div id="business6" class="business6">  
-            <!-- 中 -->
-            <div class= "business6_middle f_l wow bounceInLeft">
-                <div class= "business6_middleL">
-                    <dl>
-                        <dt>
-                            <img src="images/logo_small.png" >&nbsp; 
-                        </dt>
-                        <dd><hr/></dd>
-                        <dd>● TEL：011-769-9908</dd>
-                        <dd>● E-mail：jwb.corporation@gmail.com</dd>                    
-                        <dd>● FAX：011-769-9908</dd>
-                        <dd>● 受付時間：平日 9:00~18:00 土日 休み</dd>
-                        <dd>&nbsp;&nbsp;&nbsp;&nbsp; ※急を要することがあれば、土日でもメール対応をさせていただきます。</dd>
-                        <dd>● アクセス：狸小路6丁目 地下鉄大通駅から徒歩8分</dd>
-                        <dd>&nbsp;&nbsp;&nbsp;&nbsp; 近くに有料パーキング有り</dd>
-
-                    </dl>
-                </div>
-
-            </div>
-
-            <!-- 下 -->
-            <div class= "business6_redright">
-                <div class="business6_rightblock f_l wow bounceInRight">
-                    <div class= "business6_middleR">
-                    <dl>
-                        <dt>お問い合わせ</dt>
-                        <form action="" method="post">
-                        <dd><p>お名前：</p><input type="text" class="input_4"  id="txtName" name="txtName" /> </dd>                       
-                        <dd><p>法人名：</p><input type="text" class="input_4" id="txtTitle" name="txtCompanyName" /> </dd>  
-                        <dd><p>E-mail：</p><input type="text" class="input_4" id="txtEmail" name="txtEmail" /> </dd>
-                        <dd><p>電話番号：</p><input type="text" class="input_4" id="txtPhone" name="txtPhone" /> </dd>
-                        <dd><p>題名：</p><input type="text" class="input_4" id="txtTitle" name="txtCompanyName" /> </dd>
-                            <dd1><p>お問い合わせ内容：</p>
-                            <textarea cols="" rows="" class="input_5" id="txtContent"
-                                name="txtContent">
-                            </textarea>
-                        </dd1>
-                        <dd2>
-                             <input name="" type="submit" class="input_6" value="送信" id="txtSubmit" />
-                        </dd2>
-                        </form>
-                    </dl>
-                </div>
-                </div>  
-        </div>                
-    </div>  
-        </div>    
-    </div>
-
-    <script src="js/wow.min.js" ></script>
-    <script>
-        if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))) {
-            new WOW().init();
-        };
-    </script>
-	<div class="xs-message">
-		<script language="javascript" src="../dkb.duokebo.com/js/detector.aspx-siteid=837766" ></script>
-	</div>
-	
-    <!-- JiaThis Button BEGIN -->
-    <script type="text/javascript" src="../v3.jiathis.com/code/jiathis_r.js-type=left&move=0" 
-        charset="utf-8"></script>
-    <!-- JiaThis Button END -->
-    
-    <script src="js/anime.min.js"></script>
-    <script src="js/interaction.js"></script>
-    <script language="javascript" >
-        function runNext(){
-            animationSettings.running = true;
-            animateSegments(shownSection.nextElementSibling, false);
-//            setTimeout('runPrev()', 2500); //延迟1秒
-        }
-        
-        function runPrev(){            
-            animationSettings.running = true;
-            animateSegments(shownSection.previousElementSibling, false);
-        }
-        
-        function myfun() {
-            setTimeout('runNext()', 1500); //延迟1秒       
-        }
-//        window.onload = myfun;//不要括号
-    </script>
-    
-    <script src="js/index.js"></script>
-    <script>
-    $(function(){
-        $(".fv_news__list").hide();
-        //按钮点击事件
-        $("button").click(function(){
-            var body = $(this).parents("div");
-            if ($(this).text() == "SEE MORE"){
-                $(this).text("CLOSE");
-                $("div.fv_news").addClass("fv_news_up");
-                body.find(".fv_news__list").show();     
-            }else{
-                $(this).text("SEE MORE");
-                $("div.fv_news").removeClass("fv_news_up");
-                body.find(".fv_news__list").hide();
-            }
-        })
-    });
-    </script>
-    
-</body>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="https://cdn.bootcss.com/meyer-reset/2.0/reset.min.css" rel="stylesheet">
+		<link href="https://cdn.bootcss.com/Swiper/4.2.0/css/swiper.min.css" rel="stylesheet">
+		<script type="text/javascript">
+			document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + "px";
+			window.addEventListener("resize", function() {
+				document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + "px";
+			}, false);
+		</script>
+		<style>
+			html,
+			body {
+				width: 100%;
+				position: relative;
+				height: 100%;
+			}
+			body {
+				background: #eee;
+				font-size: 16px;
+				color: #000;
+			}
+
+			.swiper-container {
+				width: 100%;
+				height: 100%;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			.swiper-slide {
+				overflow: hidden;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+				height: auto;
+			}
+			/*手机*/
+			@media screen and(min-width: 320px)and(max-width: 750px){
+
+			}
+			/*PC*/
+			@media screen and (min-width:1024px){
+
+			}
+		</style>
+		<link rel="stylesheet" href="css/mobile.css">
+		<link rel="stylesheet" type="text/css" href="css/shutter.css"/>
+	</head>
+	<body>
+		<div id="mobile">
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+
+					<div class="swiper-slide">
+						<div class="nav">
+							<a href="#">
+								<img src="mobile-img/logo.png" alt="" class="logo">
+							</a>
+							<div class="menuBox">
+								<span>MENU</span>
+								<img src="mobile-img/menu.png" alt="" class="menu">
+							</div>
+						</div>
+						<div class="shutter">
+							<div class="shutter-img">
+								<a href="#" data-shutter-title="Iron Man"><img src="mobile-img/banner1.png" alt="#"></a>
+								<a href="#" data-shutter-title="Super Man"><img src="mobile-img/banner1.png" alt="#"></a>
+								<a href="#" data-shutter-title="The Hulk"><img src="mobile-img/banner1.png" alt="#"></a>
+								<a href="#" data-shutter-title="The your"><img src="mobile-img/banner1.png" alt="#"></a>
+							</div>
+							<ul class="shutter-btn">
+								<li class="prev"></li>
+								<li class="next"></li>
+							</ul>
+							<div class="shutter-desc">
+								<p>Iron Man</p>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide">
+
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+		<div id="pc" style="display:none;">
+			<div class="swiper-container1">
+				<div class="swiper-wrapper">
+
+					<div class="swiper-slide">
+						<div class="nav">
+
+						</div>
+					</div>
+
+					<div class="swiper-slide">
+
+					</div>
+
+
+				</div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/Swiper/4.2.0/js/swiper.min.js"></script>
+		<script src="js/velocity.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/shutter.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(window).load(function() {
+				var mySwiper = new Swiper('.swiper-container', {
+					direction: 'vertical',
+					mousewheel: true,
+					pagination: {
+						el: '.swiper-pagination',
+						clickable:true
+					},
+					keyboard: {
+						enabled: true,
+					},
+				})
+		        
+				$('.shutter').shutter({
+//			        shutterW: '750', // 容器宽度
+//			        shutterH: '1334', // 容器高度
+			        isAutoPlay: true, // 是否自动播放
+			        playInterval: 5000, // 自动播放时间
+//			        curDisplay: 3, // 当前显示页
+			        fullPage: true // 是否全屏展示
+			      });
+
+		    });
+
+
+		</script>
+	</body>
 </html>
