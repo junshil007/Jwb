@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="https://cdn.bootcss.com/meyer-reset/2.0/reset.min.css" rel="stylesheet">
 		<link href="https://cdn.bootcss.com/Swiper/4.2.0/css/swiper.min.css" rel="stylesheet">
+
 		<script type="text/javascript">
 			document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + "px";
 			window.addEventListener("resize", function() {
@@ -30,6 +31,11 @@
 				height: 100%;
 				margin-left: auto;
 				margin-right: auto;
+			}
+
+			.swiper-container1 {
+				width: 100%;
+				height: 100%;
 			}
 			.swiper-slide {
 				overflow: hidden;
@@ -59,10 +65,12 @@
 			}
 		</style>
 		<link rel="stylesheet" href="css/mobile.css">
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<link rel="stylesheet" type="text/css" href="css/pc.css">
 		<link rel="stylesheet" type="text/css" href="css/shutter.css"/>
 	</head>
 	<body>
-		<div id="mobile">
+		<div id="mobile"  style="display:none;">
 			<div class="swiper-container">
 				<div class="swiper-wrapper">
 
@@ -100,27 +108,39 @@
 				</div>
 			</div>
 		</div>
-		<div id="pc" style="display:none;">
+		<div id="pc">
+			<header>
+					<div class="wrap">
+							<div class="logo">
+									<a href="index.html" >
+											<img src="pc-img/jwb.png" ></a></div>
+							<nav class="nav_m">
+									<ul class="ce">
+											<li><a id="navon3" href="#aboutus" >お問い合わせ</a></li>
+											<li><a id="navon2" href="#introduce" >事業紹介</a></li>
+											<li><a id="navon1" href="#overview" >会社概要</a></li>
+											<li><a id="navon0" class="xz" href="#home" >HOME</a></li>
+									</ul>
+							</nav>
+					</div>
+			</header>
 			<div class="swiper-container1">
-				<div class="swiper-wrapper">
-
-					<div class="swiper-slide">
-						<div class="nav">
-
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<a href="#">
+								<img src="pc-img/jwb_1_bj.jpg" alt="" class="blg-img">
+							</a>
+							<div class="sign"><img src="pc-img/sign.png" ></div>
+							<div class="fv_news"> </div>
 						</div>
+						<div class="swiper-slide">Slide 2</div>
+						<div class="swiper-slide">Slide 3</div>
+						<div class="swiper-slide">Slide 4</div>
 					</div>
-
-					<div class="swiper-slide">
-
-					</div>
-
-
-				</div>
-				<div class="swiper-pagination"></div>
 			</div>
 		</div>
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-		<script src="https://cdn.bootcss.com/Swiper/4.2.0/js/swiper.min.js"></script>
+	  <script src="js/swiper.min.js"></script>
 		<script src="js/velocity.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/shutter.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
@@ -136,7 +156,15 @@
 						enabled: true,
 					},
 				})
-		        
+
+				var swiper = new Swiper('.swiper-container1', {
+		      direction: 'vertical',
+		      pagination: {
+		        el: '.swiper-pagination',
+		        clickable: true,
+		      },
+		    });
+
 				$('.shutter').shutter({
 //			        shutterW: '750', // 容器宽度
 //			        shutterH: '1334', // 容器高度
